@@ -1,0 +1,16 @@
+/*Cada navegador tem algumas configurações iniciais para padding margin bottom etc...
+mas essa configuração varia de navegador para navegador
+e para que todo mundo começe do mesmo ponto, a gente faz um arquivo reset.css
+para poder padronizar o ponto de start em todos os navegadores
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box; /*para ele contar de borda a borda quando eu colocar algum tamanho/largura/altura ele não contar outros elementos que estiverem em volta
+    Cálculo da largura/altura inclui tamanhos de bordas e paddings (mas não margens)
+     width, estamos definindo, a largura do conteúdo em conjunto com a borda e o padding
+    A largura total será: width + margens*/
+    font-family: monospace;
+}

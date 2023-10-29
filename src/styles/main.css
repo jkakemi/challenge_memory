@@ -1,0 +1,166 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../../imagens/valorant_poster.jpg);
+    background-size: cover;
+    user-select: none;
+}
+
+.container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    backdrop-filter: blur(6px);
+    padding: 40px 60px;
+}
+
+h2{
+    font-size: 3em;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em; /*espaçamento entre as letras*/
+}
+
+.reset_button{
+    padding: 15px 20px;
+    width: 100%;
+    color: #000000;
+    background-color: #ffffff;
+    border: none;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+    position: relative;
+}
+
+.reset_button:focus{
+    color: #ff4654;
+    background-color: rgb(0, 0, 0);
+    transition: color 0.1s, background-color 0.1s;
+}
+
+.reset_button:hover{
+    box-shadow: #000000 7px 7px 0px;
+    top: -1px;
+    right: 1px;
+    transition: top 0.5s, right 0.5s, box-shadow 0.3s; /*Definindo uma transição de 0.5 segundos para as propriedades de posição e sombra quando o mouse passa por cima*/
+}
+
+.game{
+    /*border: 1px solid black;*//*Como colocamos box-sizing: border-box; ele vai pegar de borda  a borda, e então se adicionarmos este 1px de borda, ele vai ultrapassar o espaço total e vai quebrar para a linha debaixo*/
+    width: 430px;
+    height: 430px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transform-style: preserve-3d; /*para manter as animações e transformações com o efeito de 3d*/
+    perspective: 500px;
+}
+
+.item{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+
+    font-size: 3em;
+    transform: rotateY(180deg);
+    transition: 0.25s;
+}
+
+/*para criar um conteúdo depois da minha classe item*/
+.item::after{
+    content: "";
+    position: absolute;
+    inset: 0; /*para setar o ponto zero dele, neste caso foi setado como 0, em que ele vai ficar sobrepondo exatamente o elemento*/
+    background: #404040;
+    transition: 0.25s;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;/*o que estiver detrás desta carta será hidden*/
+    /*
+    O position: absolute; faz com que o pseudo-elemento ::after seja posicionado em relação ao seu ancestral mais próximo.
+    A propriedade inset: 0; define o posicionamento exato em relação a esse ancestral, colocando o pseudo-elemento de forma a cobrir completamente o elemento pai.
+    O valor 1 em inset é uma forma abreviada de definir as propriedades top, right, bottom e left, cada uma com um valor de 1. Isso posiciona o pseudo-elemento colado às bordas do elemento pai.
+    */
+    background: url(../../imagens/valorant.png);
+    background-size: 100px;
+}
+
+.item.boxOpen{
+    transform: rotateY(0deg);
+    /*rodará o elemento*/
+}
+
+.boxOpen::after, .boxMatch::after{
+    transform: rotateY(180deg); 
+    /*coloca o after do elemento atrás do elemento*/
+}
+
+img{
+    width: 100px;
+    height: 100px;
+}
+
+@media (max-width: 768px) {
+    body{
+        background: url(../../imagens/valorant_poster_mobile.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    .container {
+        gap: 10px;
+        width: 100%;
+        padding: auto;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .reset_button {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+    
+    .game{
+        /*border: 1px solid black;*//*Como colocamos box-sizing: border-box; ele vai pegar de borda  a borda, e então se adicionarmos este 1px de borda, ele vai ultrapassar o espaço total e vai quebrar para a linha debaixo*/
+        width: 90%;
+        justify-content: center;
+        height: 230px;
+    }
+    img{
+        width: 50px;
+        height: 50px;
+        
+    }
+    .item::after{
+        background-size: 50px;
+    }
+    .item{
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 380px) {
+    .container {
+        padding: 0;
+    }
+    .reset_button{
+        padding: 8px 12px;
+        font-size: 0.9em;
+        width: 72.2%;
+
+    }
+}
